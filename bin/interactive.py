@@ -49,17 +49,15 @@ if __name__ == "__main__":
             act_n.append(policy.action(obs_n[i]))
 
         # for i in range(env.n):
-        # act_n.append(np.asarray([0, 0, 0, 0, 0.01]))
-        # act_n.append(np.asarray([0, 0, 0.01, 0, 0]))
+        #    act_n.append(np.asarray([1, 0, 0, 0, 0]))
 
         # step environment
         obs_n, reward_n, done_n, _ = env.step(act_n)
 
-        print("-------------------")
-        print("obs_n: ", obs_n)
-        print("reward_n: ", reward_n)
-        print("done_n: ", done_n)
-        print("-------------------")
+        print("-----------------------------")
+        for i, agent_i in enumerate(env.world.agents):
+            print(f"{agent_i} vel: {agent_i.state.p_vel}")
+        print("-----------------------------")
 
         # render all agent views
         env.render()
